@@ -1,0 +1,19 @@
+body,html{
+    height: 100%;
+    background-color: white;
+}
+
+.parallax{
+    background-image: url(/Commercial-Grade-Website/Images/SanSiro.jpg);
+    height: 100% ;
+    background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text{
+    height: 1000px;
+    background-color: red;
+    font-size: 36px;
+}
