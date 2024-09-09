@@ -5,6 +5,8 @@ const root = "/Commercial-Grade-Website"; // Ensure this matches the folder name
 const menuItems = [
     {name: "Home", href: root + "/index.html"},
     {name: "Design", href:`${root}/Design/index.html`},
+    {name: "Theory", href:`${root}/Theory/index.html`},
+    {name: "DataViz", href:`${root}/DataViz/index.html`},
 ];
 
 export function initialise(currentPage) {
@@ -31,3 +33,8 @@ export function initialise(currentPage) {
 
     nav.appendChild(ul); // Append the generated <ul> to the <nav>
 }
+
+window.addEventListener("scroll", function(){
+    let header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0)
+})
