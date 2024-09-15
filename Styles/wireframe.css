@@ -1,0 +1,86 @@
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 150px;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.card {
+    background-color: hsl(0, 0%, 20%); /* jet-1 (grey) */
+    border-radius: 5px; /* radius-5 */
+    box-shadow: 0 12px 30px -10px hsla(0, 0%, 14%, 0.1); /* shadow */
+    overflow: hidden;
+    transition: transform 0.5s ease, background 0.5s ease;
+    flex: 0 0 calc(33.333% - 20px); /* Three cards per view, accounting for gaps */
+    margin: 10px;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid hsl(0, 0%, 16%); /* jet-2 (slightly darker grey) */
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content p {
+    font-family: "Gordita", sans-serif;
+    font-size: 1.4rem; /* fs-10 */
+    line-height: 1.6;
+}
+
+.carousel-button {
+    background-color: hsl(0, 0%, 20%); /* jet-1 (grey) */
+    border: none;
+    color: hsl(0, 0%, 100%); /* white */
+    padding: 10px 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.prev-button {
+    left: 0;
+    
+}
+
+.next-button {
+    right: 0;
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px; /* Add some padding if needed */
+  }
+  
+  #prevButton, #nextButton {
+    width: 150px; /* Adjust the width as needed */
+    height: 75px;  /* Adjust the height as needed */
+  }

@@ -142,6 +142,6 @@ header.sticky ul li a{
     font-size: 36px;
     font-family: 'Dancing Script', cursive;
     position: relative;
-    top: -800px; /* Adjust this value to move the div upwards */
+    top: -500px; /* Adjust this value to move the div upwards */
     width: 100%;
 }
