@@ -1,0 +1,30 @@
+body{
+    padding: 50px 100px
+}
+
+main {
+    max-width: 900px; /* Set a max width for the content */
+    margin: 0 auto; /* Center the content on the page */
+    padding-top: 250px; /* Add space below the fixed header */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+h2 {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 36px;
+    color: #ff0000; /* Red for AC Milan's theme */
+    margin: 40px 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Style the paragraphs */
+p {
+    margin-bottom: 20px; /* Add space between paragraphs */
+    text-align: justify; /* Justify text for a cleaner look */
+    max-width: 900px; /* Constrain paragraph width */
+    padding: 0 50px; /* Adds padding on the left and right sides */
+    font-size: 18px;
+}
