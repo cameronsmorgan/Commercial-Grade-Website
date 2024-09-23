@@ -1,5 +1,5 @@
 const apiKey = '3';
-const apiUrl = `https://www.thesportsdb.com/api/v1/json/3/eventsseason.php?id=4332&s=2021-2022`;
+const apiUrl = `https://www.thesportsdb.com/api/v1/json/3/honours.php?id=133677`;
 
 fetch(apiUrl)
     .then(response => response.json())
