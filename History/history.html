@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Milan</title>
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/history.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="../Images/ACMilanLogo.png" alt="AC Milan Logo" class="logo-img">
+            AC Milan
+        </a>
+        <nav></nav>
+    </header>
+
+    <section class="video-home">
+        <!-- Video Slides -->
+        <video class="video-slider active" src="../Videos/SampleVideo_1280x720_5mb.mp4" autoplay muted loop></video>
+        <video class="video-slider" src="../Videos/sample-5s.mp4" autoplay muted loop></video>
+        <video class="video-slider" src="../Videos/SampleVideo_1280x720_5mb.mp4" autoplay muted loop></video>
+        <video class="video-slider" src="../Videos/SampleVideo_1280x720_5mb.mp4" autoplay muted loop></video>
+        <video class="video-slider" src="../Videos/SampleVideo_1280x720_5mb.mp4" autoplay muted loop></video>
+
+        <!-- Content for each slide -->
+        <div class="content active">
+            <h1>Wonderful<br><span>Island</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quod, nesciunt officiis quam est autem similique doloribus molestiae ullam excepturi blanditiis accusantium culpa? Reprehenderit iste consectetur illum, quae odit totam.</p>
+            <a href="#">Read More</a>
+        </div>
+
+        <div class="content">
+            <h1>Camping<br><span>Enjoy</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quod, nesciunt officiis quam est autem similique doloribus molestiae ullam excepturi blanditiis accusantium culpa? Reprehenderit iste consectetur illum, quae odit totam.</p>
+            <a href="#">Read More</a>
+        </div>
+
+        <div class="content">
+            <h1>Adventures<br><span>Off Road</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quod, nesciunt officiis quam est autem similique doloribus molestiae ullam excepturi blanditiis accusantium culpa? Reprehenderit iste consectetur illum, quae odit totam.</p>
+            <a href="#">Read More</a>
+        </div>
+
+        <div class="content">
+            <h1>Road Trip<br><span>Together</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quod, nesciunt officiis quam est autem similique doloribus molestiae ullam excepturi blanditiis accusantium culpa? Reprehenderit iste consectetur illum, quae odit totam.</p>
+            <a href="#">Read More</a>
+        </div>
+
+        <div class="content">
+            <h1>Feel Nature<br><span>Relax</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quod, nesciunt officiis quam est autem similique doloribus molestiae ullam excepturi blanditiis accusantium culpa? Reprehenderit iste consectetur illum, quae odit totam.</p>
+            <a href="#">Read More</a>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="slider-nav">
+            <div class="nav-btn active"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { initialise } from "../Scripts/menu.js";
+        initialise("History"); // Call the initialise function with a test argument
+    </script>
+
+    <script src="../Scripts/videoSlider.js"></script>
+</body>
+</html>
