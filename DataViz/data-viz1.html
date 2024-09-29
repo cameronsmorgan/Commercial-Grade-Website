@@ -2,81 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AC Milan Trophy Growth Animation</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Chart</title>
     <style>
-        .bar {
+        /* Add some basic styles for the chart */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .bubble {
             fill: steelblue;
+            stroke: #fff;
+            stroke-width: 1px;
         }
-        .bar:hover {
-            fill: orange;
-        }
-        .axis-label {
-            font-size: 12px;
+
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            width: 120px;
+            padding: 5px;
+            background: lightsteelblue;
+            border-radius: 8px;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <svg width="800" height="400"></svg>
+    <h2>Football Standings Bubble Chart</h2>
+    <div id="chart"></div>
 
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-        const acMilanTrophies = [
-            { year: 1901, count: 1 },
-            { year: 1906, count: 2 },
-            { year: 1951, count: 3 },
-            { year: 1963, count: 4 },
-            { year: 1994, count: 5 },
-            { year: 2007, count: 6 },
-            { year: 2011, count: 7 },
-            { year: 2022, count: 8 }
-        ];
+        const fetchStandings = async () => {
+            const url = 'https://sofascore.p.rapidapi.com/tournaments/get-standings?tournamentId=23&seasonId=37475&type=total';
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': '6ed0a534c9mshb4ce6150cf50aa4p1b036bjsnf2a0146c6be0',
+                    'x-rapidapi-host': 'sofascore.p.rapidapi.com'
+                }
+            };
 
-        const svg = d3.select("svg"),
-            margin = { top: 20, right: 20, bottom: 30, left: 50 },
-            width = +svg.attr("width") - margin.left - margin.right,
-            height = +svg.attr("height") - margin.top - margin.bottom;
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const result = await response.json();
 
-        const x = d3.scaleBand()
-            .range([0, width])
-            .padding(0.1);
+                // Extract the teams and points
+                if (result && result.standings && result.standings[0] && result.standings[0].rows) {
+                    const teamsData = result.standings[0].rows.map(team => ({
+                        name: team.team.name,
+                        points: team.points
+                    }));
 
-        const y = d3.scaleLinear()
-            .range([height, 0]);
+                    // Call function to create the bubble chart
+                    createBubbleChart(teamsData);
+                } else {
+                    console.log('No standings data found.');
+                }
+            } catch (error) {
+                console.error('Error fetching standings:', error);
+            }
+        };
 
-        const g = svg.append("g")
-            .attr("transform", `translate(${margin.left},${margin.top})`);
+        const createBubbleChart = (data) => {
+            const width = 800;
+            const height = 600;
 
-        x.domain(acMilanTrophies.map(d => d.year));
-        y.domain([0, d3.max(acMilanTrophies, d => d.count)]);
+            const svg = d3.select("#chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
 
-        // Add X Axis
-        g.append("g")
-            .attr("class", "axis-label")
-            .attr("transform", `translate(0,${height})`)
-            .call(d3.axisBottom(x).tickFormat(d3.format("d"))); // Format years
+            // Create a scale for bubble size (radius based on points)
+            const radiusScale = d3.scaleSqrt()
+                .domain([0, d3.max(data, d => d.points)])
+                .range([10, 50]);
 
-        // Add Y Axis
-        g.append("g")
-            .attr("class", "axis-label")
-            .call(d3.axisLeft(y));
+            // Simulation for bubble layout
+            const simulation = d3.forceSimulation(data)
+                .force("x", d3.forceX(width / 2).strength(0.05))
+                .force("y", d3.forceY(height / 2).strength(0.05))
+                .force("charge", d3.forceManyBody().strength(-50))
+                .force("collision", d3.forceCollide(d => radiusScale(d.points) + 2))
+                .on("tick", ticked);
 
-        // Create bars for each data point
-        const bars = g.selectAll(".bar")
-            .data(acMilanTrophies)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", d => x(d.year))
-            .attr("y", height) // Start bars at bottom
-            .attr("width", x.bandwidth())
-            .attr("height", 0); // Start with no height
+            const tooltip = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
 
-        // Animate the growth of the bars
-        bars.transition()
-            .duration(1000) // 1-second animation per bar
-            .delay((d, i) => i * 1000) // Staggered animation for each bar
-            .attr("y", d => y(d.count))
-            .attr("height", d => height - y(d.count));
+            const bubbles = svg.selectAll(".bubble")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("class", "bubble")
+                .attr("r", d => radiusScale(d.points))
+                .attr("fill", "steelblue")
+                .on("mouseover", (event, d) => {
+                    tooltip.transition().duration(200).style("opacity", .9);
+                    tooltip.html(d.name + "<br/>Points: " + d.points)
+                        .style("left", (event.pageX + 5) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                })
+                .on("mouseout", () => {
+                    tooltip.transition().duration(500).style("opacity", 0);
+                });
+
+            function ticked() {
+                bubbles
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+            }
+        };
+
+        // Call the fetch function to get data and create the chart
+        fetchStandings();
     </script>
-    <script src="../Scripts/test.js"></script>
 </body>
 </html>
