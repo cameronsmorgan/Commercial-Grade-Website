@@ -18,15 +18,20 @@ body,html{
 
 }
 
-.parallax-1{
+.parallax-1 {
     background-image: url(/Commercial-Grade-Website/Images/SanSiro.jpg);
-    height: 100% ;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.parallax-2{
+.parallax-2 {
     background-image: url(/Commercial-Grade-Website/Images/PaoloMaldini.jpg);
-   
     height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .parallax-1, .parallax-2{
@@ -145,8 +150,8 @@ header.sticky ul li a{
 }
 
 .border {
-    color: black;
-    background-color: white;
+    color: white;
+
     text-align: justify;
     padding: 50px 80px;
     font-size: 36px;
