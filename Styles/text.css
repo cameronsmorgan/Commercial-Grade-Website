@@ -28,3 +28,11 @@ p {
     padding: 0 50px; /* Adds padding on the left and right sides */
     font-size: 18px;
 }
+
+ul{
+    margin-bottom: 20px; /* Add space between paragraphs */
+    text-align: justify; /* Justify text for a cleaner look */
+    max-width: 900px; /* Constrain paragraph width */
+    padding: 0 50px; /* Adds padding on the left and right sides */
+    font-size: 18px;
+}
