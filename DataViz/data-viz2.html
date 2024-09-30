@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Rating Heatmap</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #heatmap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        svg {
+            margin: 50px;
+        }
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            width: 100px;
+            height: auto;
+            padding: 8px;
+            background-color: #f9f9f9;
+            border: 1px solid #d3d3d3;
+            border-radius: 5px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>AC Milan Player Ratings (2024/2025)</h1>
+    <div id="heatmap"></div>
+
+    <script>
+        // Fetch player ratings data from Sofascore API
+        const fetchStandings = async () => {
+            const url = 'https://sofascore.p.rapidapi.com/teams/get-player-statistics?teamId=2692&tournamentId=23&seasonId=63515&type=overall';
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': '6ed0a534c9mshb4ce6150cf50aa4p1b036bjsnf2a0146c6be0',
+                    'x-rapidapi-host': 'sofascore.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log(result); // Check the fetched data
+
+                // Extract player data from the response
+                const playerData = result.topPlayers.rating.map(player => ({
+                    name: player.player.name,
+                    rating: player.statistics.rating
+                }));
+
+                createHeatmap(playerData);
+            } catch (error) {
+                console.error('Error fetching player data:', error);
+            }
+        };
+
+        // Create a heatmap using D3.js
+        const createHeatmap = (playerData) => {
+            // Set dimensions and margins for the heatmap
+            const margin = { top: 50, right: 50, bottom: 50, left: 50 },
+                width = 800 - margin.left - margin.right,
+                height = 400 - margin.top - margin.bottom;
+
+            // Append the svg object to the div
+            const svg = d3.select("#heatmap")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            // Tooltip div
+            const tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip");
+
+            // Define a color scale based on rating ranges
+            const colorScale = d3.scaleThreshold()
+                .domain([6.00, 6.50, 7.00, 8.00])
+                .range(["#FF7F0E", "#FFBB78", "#FFD700", "#28A745"]);  // orange, yellow, green
+
+            // Add a rectangle for each player
+            svg.selectAll("rect")
+                .data(playerData)
+                .enter()
+                .append("rect")
+                .attr("x", (d, i) => i * (width / playerData.length))
+                .attr("y", 0)
+                .attr("width", width / playerData.length - 2)  // Set width and spacing
+                .attr("height", height)
+                .attr("fill", d => colorScale(d.rating))
+                .on("mouseover", function (event, d) {
+                    tooltip
+                        .style("opacity", 1)
+                        .html(`<strong>${d.name}</strong><br>Rating: ${d.rating}`)
+                        .style("left", `${event.pageX + 5}px`)
+                        .style("top", `${event.pageY - 30}px`);
+                })
+                .on("mousemove", function (event) {
+                    tooltip
+                        .style("left", `${event.pageX + 5}px`)
+                        .style("top", `${event.pageY - 30}px`);
+                })
+                .on("mouseout", function () {
+                    tooltip.style("opacity", 0);
+                });
+        };
+
+        // Call the function to fetch player data and render the heatmap
+        fetchStandings();
+    </script>
+</body>
+</html>
