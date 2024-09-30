@@ -191,13 +191,7 @@ header.sticky ul li a{
     color:#000 ;
 }
 
-/* .banner{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: url(/Commercial-Grade-Website/Images/SanSiro.jpg);
-    background-size: cover;
-} */
+
 
 .calligraphy-container{
     position:absolute;
@@ -231,17 +225,6 @@ header.sticky ul li a{
     }
 }
 
-.border {
-    color: white;
-
-    text-align: justify;
-    padding: 50px 80px;
-    font-size: 36px;
-    font-family: 'Dancing Script', cursive;
-    position: relative;
-    top: -500px; /* Adjust this value to move the div upwards */
-    width: 100%;
-}
 
 main {
     padding-top: 50px; /* Adjust this value based on your header height */
