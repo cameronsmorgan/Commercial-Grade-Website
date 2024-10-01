@@ -89,7 +89,7 @@ section{
 
     width: 12px;
     height: 10px;
-    background: white;
+    background: black;
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 2px rgba(255, 255, 255,0.5);
