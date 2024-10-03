@@ -191,6 +191,18 @@ header.sticky ul li a{
     color:#000 ;
 }
 
+header nav ul li.active a {
+    border-bottom: 2px solid #ff0000; /* Customize the color */
+    padding-bottom: 5px; /* Add some padding for spacing */
+    color: white; /* Optionally change the text color for the active link */
+}
+
+/* Optional: Add underline effect on hover for other links */
+header nav ul li a:hover {
+    border-bottom: 2px solid #ff0000; /* Customize the hover underline color */
+    padding-bottom: 5px;
+}
+
 
 
 .calligraphy-container{
@@ -233,6 +245,6 @@ main {
 #myEssay1 {
     width: 100%;
     height: 600px;
-    
+   
 }
 

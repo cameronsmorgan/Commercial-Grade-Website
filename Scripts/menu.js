@@ -19,17 +19,18 @@ export function initialise(currentPage) {
     for (let menuItem of menuItems) {
         const li = document.createElement("li");
 
-        if (currentPage !== menuItem.name) {
-            // Create a clickable link for other pages
-            const a = document.createElement("a");
-            a.innerText = menuItem.name;
-            a.setAttribute("href", menuItem.href);
-            li.appendChild(a);
-        } else {
-            // Display the current page name without a link
-            li.innerText = menuItem.name;
+        const a = document.createElement("a");
+        a.innerText = menuItem.name;
+        a.setAttribute("href", menuItem.href);
+
+        if (currentPage === menuItem.name) {
+            // Add 'active' class if it's the current page
+            li.classList.add("active");
+            a.classList.add("active");
         }
-        ul.appendChild(li);
+
+        li.appendChild(a); // Append the link to the list item
+        ul.appendChild(li); // Append the list item to the <ul>
     }
 
     nav.appendChild(ul); // Append the generated <ul> to the <nav>
@@ -37,7 +38,6 @@ export function initialise(currentPage) {
 
 window.addEventListener("scroll", function(){
     let header = document.querySelector("header");
-    header.classList.toggle("sticky", window.scrollY > 0)
-})
-
+    header.classList.toggle("sticky", window.scrollY > 0);
+});
 
