@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Rating Heatmap</title>
+    <link rel="stylesheet" href="../Styles/style.css">
+
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-top: 100px; /* Adjust this value as needed */
+            text-align: center;
+        }
+
+        #heatmap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px; /* Add margin to give space below the dropdown */
         }
         #heatmap {
             display: flex;
@@ -29,11 +42,20 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.2s ease-in-out;
+            color: black;
         }
     </style>
 </head>
 <body>
-    <h1>AC Milan Player Ratings (2024/2025)</h1>
+
+    <header>
+        <a href="#" class="logo">
+            <img src="../Images/ACMilanLogo.png" alt="AC Milan Logo" class="logo-img">
+            AC Milan
+        </a>
+        <nav></nav>
+    </header>
+    <h1>AC Milan Player Performace (2024/2025)</h1>
 
     <!-- Dropdown for filtering the heatmap -->
     <div style="text-align: center; margin-bottom: 20px;">
@@ -47,6 +69,11 @@
     </div>
 
     <div id="heatmap"></div>
+
+    <script type="module">
+        import { initialise } from "../Scripts/menu.js";
+        initialise(" "); // Call the initialise function with a test argument
+    </script>
 
     <script src="../Scripts/heatmap.js"></script>
 </body>
