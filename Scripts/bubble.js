@@ -1,5 +1,6 @@
 console.log('js loaded');
 
+//asynchronous functions can use await to handle promises
 const fetchStandings = async () => {
     const url = 'https://sofascore.p.rapidapi.com/tournaments/get-standings?tournamentId=23&seasonId=37475&type=total';
     const options = {
@@ -10,10 +11,12 @@ const fetchStandings = async () => {
         }
     };
 
-    try {
-        const response = await fetch(url, options);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const result = await response.json();
+    /* -->try statement allows a block of code to run and be tested for errors during execution
+       -->catch statement allows code to run IF an error occurs in the try statement*/
+    try {  
+        const response = await fetch(url, options);  //await pauses the code execution until the promise returned by fetch is accepted or rejected
+        if (!response.ok) throw new Error(`http error status: ${response.status}`);
+        const result = await response.json();  //parses json data
 
         if (result && result.standings && result.standings[0] && result.standings[0].rows) {
             const teamsData = result.standings[0].rows.map((team, index) => ({

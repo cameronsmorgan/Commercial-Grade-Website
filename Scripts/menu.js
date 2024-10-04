@@ -1,6 +1,6 @@
 console.log('loaded');
 
-const root = "/Commercial-Grade-Website"; // Ensure this matches the folder name
+const root = "/Commercial-Grade-Website"; // folder name
 
 const menuItems = [
     {name: "Home", href: root + "/index.html"},
@@ -10,11 +10,20 @@ const menuItems = [
     {name: "Memories", href:`${root}/Memories/memories.html`},
 ];
 
+/*export function is used so that the function can be used or accessed in other files. 
+    this function builds the nav menu and highlights the current page*/
+
 export function initialise(currentPage) {
     console.log("worked");
 
-    const nav = document.querySelector("header > nav"); // Ensure there's a <nav> inside <header> in the HTML
+    const nav = document.querySelector("header > nav"); 
     const ul = document.createElement("ul");
+
+
+    /*-->iterates through each menu item in the array of objects
+      --> for each menu item a list and anchor element is created
+      --> text of the anchor is set to the name property
+      --> gives it a href link*/
 
     for (let menuItem of menuItems) {
         const li = document.createElement("li");
@@ -24,20 +33,20 @@ export function initialise(currentPage) {
         a.setAttribute("href", menuItem.href);
 
         if (currentPage === menuItem.name) {
-            // Add 'active' class if it's the current page
-            li.classList.add("active");
+            
+            li.classList.add("active");         //active class is added to the current page
             a.classList.add("active");
         }
 
-        li.appendChild(a); // Append the link to the list item
-        ul.appendChild(li); // Append the list item to the <ul>
+        li.appendChild(a); 
+        ul.appendChild(li); 
     }
 
-    nav.appendChild(ul); // Append the generated <ul> to the <nav>
+    nav.appendChild(ul); 
 }
 
 window.addEventListener("scroll", function(){
     let header = document.querySelector("header");
-    header.classList.toggle("sticky", window.scrollY > 0);
+    header.classList.toggle("sticky", window.scrollY > 0);  //window.scrollY checks if scrolled down
 });
 
