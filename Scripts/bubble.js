@@ -18,76 +18,91 @@ const fetchStandings = async () => {
         if (!response.ok) throw new Error(`http error status: ${response.status}`);
         const result = await response.json();  //parses json data
 
-        if (result && result.standings && result.standings[0] && result.standings[0].rows) {
+        /*--> the if statement checks if the result objectand the standings property within exists.
+          --> result.standings[0] checks if the first element in the array exists to safeguard against missing data
+          --> function extracts required information and places into a new array*/
+        if (result && result.standings && result.standings[0]) {
             const teamsData = result.standings[0].rows.map((team, index) => ({
                 name: team.team.name,
                 points: team.points,
                 rank: index + 1
             }));
+            console.log(teamsData);
 
             // Create the bubble chart with the fetched data
             createBubbleChart(teamsData);
         } else {
-            console.log('No standings data found.');
+            console.log('No data.');
         }
     } catch (error) {
-        console.error('Error fetching standings:', error);
+        console.error('Error fetching data:', error);
     }
 };
 
 
-// Create a heatmap using D3.js
-const createBubbleChart = (data) => {
-    const width = 800;
-    const height = 600;
-    const sectionWidth = width / 2;
-    const sectionHeight = height / 2;
 
-    const svg = d3.select("#chart")
+const createBubbleChart = (data) => {
+    let width = 800;
+    let height = 600;
+    let sectionWidth = width / 2;
+    let sectionHeight = height / 2;
+
+    /*--> CREATE SVG
+      --> adds text inside the svg for each section */
+    const svg = d3.select("#chart")    
         .append("svg")
         .attr("width", width)
         .attr("height", height);
 
-    // Add section labels
+   
     svg.append("text")
-        .attr("x", sectionWidth / 2)
+        .attr("x", sectionWidth / 2)     //places it left side and centre
         .attr("y", 20)
         .attr("class", "section-title")
         .text("Top 4 Teams");
 
     svg.append("text")
-        .attr("x", 3 * sectionWidth / 2)
+        .attr("x", 3 * sectionWidth / 2) //places it on the right
         .attr("y", 20)
         .attr("class", "section-title")
         .text("5th - 7th Place");
 
     svg.append("text")
-        .attr("x", sectionWidth / 2)
+        .attr("x", sectionWidth / 2)    //places it left below
         .attr("y", height - 20)
         .attr("class", "section-title")
         .text("Mid-table Teams");
 
     svg.append("text")
-        .attr("x", 3 * sectionWidth / 2)
+        .attr("x", 3 * sectionWidth / 2)  //places it right below
         .attr("y", height - 20)
         .attr("class", "section-title")
         .text("Bottom 3 Teams");
 
-    const radiusScale = d3.scaleSqrt()
+        /*--> CREATE SCALES 
+          --> scale square root useful for sizing circles by area proportionally to the data*/
+    let radiusScale = d3
+        .scaleSqrt()
         .domain([0, d3.max(data, d => d.points)])
         .range([10, 50]);
 
-    const simulation = d3.forceSimulation(data)
-        .force("x", d3.forceX(width / 2).strength(0.05))
+        /* */
+    const simulation = d3.forceSimulation(data) //inits force simulation on the data set
+        .force("x", d3.forceX(width / 2).strength(0.05)) //horizontal force pulls towards centre of chart according to the strenght
         .force("y", d3.forceY(height / 2).strength(0.05))
-        .force("charge", d3.forceManyBody().strength(-50))
-        .force("collision", d3.forceCollide(d => radiusScale(d.points) + 2))
-        .on("tick", ticked);
 
-    const tooltip = d3.select("body").append("div")
+        .force("charge", d3.forceManyBody().strength(-50)) //adds a replusive(negative) force between the bubbles to prevent overlap
+        .force("collision", d3.forceCollide(d => radiusScale(d.points) + 2)) //the function sets a radius for each bubble based on the points in the data set
+        .on("tick", ticked); //updates visual positions of bubbles based on forces applied
+
+
+        
+    const tooltip = d3.select("body").append("div") //adds tooltip + styling
         .attr("class", "tooltip")
         .style("opacity", 0);
 
+        /*--> CREATE BUBBLES
+           */
     const bubbles = svg.selectAll(".bubble")
         .data(data)
         .enter()
@@ -97,7 +112,7 @@ const createBubbleChart = (data) => {
         .attr("fill", "steelblue")
         .on("mouseover", (event, d) => {
             tooltip.transition().duration(200).style("opacity", .9);
-            tooltip.html(d.name + "<br/>Points: " + d.points)
+            tooltip.html(d.name + "<br/>Points: " + d.points)  //tooltip shows team and points
                 .style("left", (event.pageX + 5) + "px")
                 .style("top", (event.pageY - 28) + "px");
         })
@@ -111,50 +126,51 @@ const createBubbleChart = (data) => {
             .attr("cy", d => d.y);
     }
 
-    // Function to split bubbles into four sections based on rank
+    /*--> Sets out the rules to divide the bubbles according to team rank
+      --> force applied place bubbles into sections created above */
     const splitBubbles = () => {
         simulation
             .force("x", d3.forceX(d => {
                 if (d.rank <= 4) {
-                    return sectionWidth / 2; // Top 4 teams (Left Top)
+                    return sectionWidth / 2; 
                 } else if (d.rank >= 5 && d.rank <= 7) {
-                    return 3 * sectionWidth / 2; // 5th - 7th placed teams (Right Top)
+                    return 3 * sectionWidth / 2;
                 } else if (d.rank >= 18) {
-                    return 3 * sectionWidth / 2; // Bottom 3 teams (Right Bottom)
+                    return 3 * sectionWidth / 2; 
                 } else {
-                    return sectionWidth / 2; // Mid-table teams (Left Bottom)
+                    return sectionWidth / 2;
                 }
             }).strength(0.1))
             .force("y", d3.forceY(d => {
                 if (d.rank <= 4) {
-                    return sectionHeight / 2; // Top 4 teams (Top Section)
+                    return sectionHeight / 2; 
                 } else if (d.rank >= 5 && d.rank <= 7) {
-                    return sectionHeight / 2; // 5th - 7th placed teams (Top Section)
+                    return sectionHeight / 2; 
                 } else if (d.rank >= 18) {
-                    return 3 * sectionHeight / 2; // Bottom 3 teams (Bottom Section)
+                    return 3 * sectionHeight / 2;
                 } else {
-                    return 3 * sectionHeight / 2; // Mid-table teams (Bottom Section)
+                    return 3 * sectionHeight / 2; 
                 }
             }).strength(0.1))
-            .alpha(0.5) // Reheat the simulation
+            .alpha(0.5) 
             .restart();
     };
 
-    // Function to reset bubbles back to combined in the center
+    
     const resetBubbles = () => {
         simulation
-            .force("x", d3.forceX(width / 2).strength(0.05)) // Reset to center
-            .force("y", d3.forceY(height / 2).strength(0.05)) // Reset to center
-            .alpha(0.5) // Reheat the simulation
+            .force("x", d3.forceX(width / 2).strength(0.05)) 
+            .force("y", d3.forceY(height / 2).strength(0.05)) 
+            .alpha(0.5) 
             .restart();
     };
 
-    // Attach the splitBubbles function to the "Split Bubbles" button
+    
     d3.select("#splitButton").on("click", splitBubbles);
 
-    // Attach the resetBubbles function to the "Reset/Combine Bubbles" button
+  
     d3.select("#resetButton").on("click", resetBubbles);
 };
 
-// Fetch the standings and create the chart
+
 fetchStandings();
