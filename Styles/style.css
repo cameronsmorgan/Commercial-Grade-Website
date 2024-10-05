@@ -14,7 +14,7 @@ body,html{
     background-color: black;
     color: white;
     min-height: 200vh;
-    line-height: 1.6; /* Improves readability of paragraphs */
+    line-height: 1.6; 
 
 }
 
@@ -43,7 +43,7 @@ body,html{
     text-align: center;
 }
 
-/* Style for Maldini image and text section */
+
 .maldini-section {
     display: flex;
     height: 100vh;
@@ -75,7 +75,7 @@ body,html{
     display: flex;
     height: 100vh;
 
-    margin-bottom: 50px; /* Creates a gap */
+    margin-bottom: 50px; 
 }
 
 .third-text {
@@ -110,7 +110,7 @@ body,html{
 
 .fourth-image {
     width: 100%;
-    height: 75vh; /* Set height so it doesn't cover the entire viewport */
+    height: 75vh; 
     background-image: url('../Images/CurvaSud.jpg');
     background-size: cover;
     background-position: center;
@@ -155,13 +155,13 @@ header.sticky{
     transition: 0.6s;
     z-index: 10000;
     display: flex;
-    align-items: center; /* Aligns text and image in a single line */
+    align-items: center; 
 }
 
 .logo-img {
-    width: 40px; /* Adjust the size as needed */
+    width: 40px;
     height: auto;
-    margin-right: 10px; /* Add spacing between the logo image and the text */
+    margin-right: 10px; 
 }
 
 header ul{
@@ -192,14 +192,14 @@ header.sticky ul li a{
 }
 
 header nav ul li.active a {
-    border-bottom: 2px solid #ff0000; /* Customize the color */
-    padding-bottom: 5px; /* Add some padding for spacing */
-    color: white; /* Optionally change the text color for the active link */
+    border-bottom: 2px solid #ff0000; 
+    padding-bottom: 5px; 
+    color: white; 
 }
 
-/* Optional: Add underline effect on hover for other links */
+/* underline effect */
 header nav ul li a:hover {
-    border-bottom: 2px solid #ff0000; /* Customize the hover underline color */
+    border-bottom: 2px solid #ff0000; 
     padding-bottom: 5px;
 }
 
@@ -239,7 +239,7 @@ header nav ul li a:hover {
 
 
 main {
-    padding-top: 50px; /* Adjust this value based on your header height */
+    padding-top: 50px; 
 }
 
 #myEssay1 {

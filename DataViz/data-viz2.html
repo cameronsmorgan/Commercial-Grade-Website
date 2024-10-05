@@ -48,7 +48,7 @@
     </header>
     <h1>AC Milan Player Performace (2023/2024)</h1>
 
-    <!-- Dropdown for filtering the heatmap -->
+ <main>
     <div style="text-align: center; margin-bottom: 20px;">
         <label for="stat-filter">Sort By: </label>
         <select id="stat-filter">
@@ -60,10 +60,11 @@
     </div>
 
     <div id="heatmap"></div>
+</main>
 
     <script type="module">
         import { initialise } from "../Scripts/menu.js";
-        initialise("DataViz"); // Call the initialise function with a test argument
+        initialise("DataViz"); 
     </script>
 
     <script src="../Scripts/heatmap.js"></script>

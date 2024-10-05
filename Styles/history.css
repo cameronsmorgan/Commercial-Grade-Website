@@ -59,8 +59,8 @@ section{
     height: 100%;
     top: 0;
     left: 0; 
-    background: rgba(0, 0, 0, 0.5); /* Darken the video with 50% opacity */
-    z-index: 500; /* Ensure overlay is above the video */
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 500; 
 }
 
 .video-home .content h1 span{
