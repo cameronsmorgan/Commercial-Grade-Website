@@ -29,79 +29,15 @@
             "description": "Data Visualization contains d3.js content"
         }
       </script>
+
+      <script src="https://d3js.org/d3.v7.min.js"></script>
     <title>Bubble Chart</title>
     <link rel="stylesheet" href="../Styles/style.css">
-    
+    <link rel="stylesheet" href="../Styles/bubble.css">
 
     
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center items horizontally */
-            margin: 0;
-            padding: 20px 0; /* Add some padding on top */
 
-        }
-
-        header {
-            width: 100%;
-
-            color: white;
-            padding: 10px 0;
-            text-align: center; /* Center the header text */
-            position: fixed; /* Fix the header to the top */
-            top: 0;
-            z-index: 10; /* Make sure it stays above other elements */
-        }
-
-        .bubble {
-            fill: steelblue;
-            stroke: #fff;
-            stroke-width: 1px;
-        }
-
-        .tooltip {
-            position: absolute;
-            text-align: center;
-            width: 120px;
-            padding: 5px;
-            background: lightsteelblue;
-            border-radius: 8px;
-            pointer-events: none;
-        }
-
-        button {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer; /* Change cursor on hover */
-        }
-
-        .section-title {
-            fill: white;
-            font-size: 16px;
-            text-anchor: middle;
-        }
-
-        /* Added styles for the chart and button layout */
-        #chart-wrapper {
-            display: flex;
-            align-items: flex-start; /* Align items to the top */
-            margin-top: 100px; /* Adjust based on header height */
-        }
-
-        #buttons {
-            display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            margin-right: 20px; /* Space between buttons and chart */
-        }
-
-        #chart {
-            margin-bottom: 20px; /* Space between chart and buttons */
-        }
-        </style>
+    
 </head>
 <body>
     <header>
@@ -119,7 +55,7 @@
         <button id="resetButton">Reset/Combine Bubbles</button>
     </div>
 
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+
     
     <script type="module">
         import { initialise } from "../Scripts/menu.js";

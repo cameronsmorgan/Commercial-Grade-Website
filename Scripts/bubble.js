@@ -84,10 +84,10 @@ const createBubbleChart = (data) => {
     let radiusScale = d3
         .scaleSqrt()
         .domain([0, d3.max(data, d => d.points)])
-        .range([10, 50]);
+        .range([5, 50]);
 
         /* */
-    const simulation = d3.forceSimulation(data) //inits force simulation on the data set
+    let simulation = d3.forceSimulation(data) //inits force simulation on the data set
         .force("x", d3.forceX(width / 2).strength(0.05)) //horizontal force pulls towards centre of chart according to the strenght
         .force("y", d3.forceY(height / 2).strength(0.05))
 
@@ -103,13 +103,15 @@ const createBubbleChart = (data) => {
 
         /*--> CREATE BUBBLES
            */
-    const bubbles = svg.selectAll(".bubble")
+    let bubbles = svg.selectAll(".bubble")
         .data(data)
         .enter()
         .append("circle")
         .attr("class", "bubble")
         .attr("r", d => radiusScale(d.points))
-        .attr("fill", "steelblue")
+        .attr("fill", "red")
+        .attr("stroke", "white")
+        .attr("stroke-width","3px")
         .on("mouseover", (event, d) => {
             tooltip.transition().duration(200).style("opacity", .9);
             tooltip.html(d.name + "<br/>Points: " + d.points)  //tooltip shows team and points
