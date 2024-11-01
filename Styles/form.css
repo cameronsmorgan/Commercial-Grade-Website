@@ -90,3 +90,31 @@ button[type="submit"]:hover {
 .success {
     color: #4CAF50;
 }
+
+.success-message {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #4CAF50;
+    background-color: #DFF2BF;
+    color: #4CAF50;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#charCount {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+.error {
+    color: red;
+}
+
+textarea {
+    width: 100%;       /* Full width of the container */
+    max-width: 500px;  /* Limit the maximum width */
+    height: 150px;     /* Height in pixels */
+    padding: 10px;     /* Add padding for better spacing */
+    font-size: 16px;   /* Adjust font size */
+}

@@ -47,7 +47,17 @@
                 <input id="password2" name="password2" type="password">
                 <div class="error"></div>
             </div>
+            <div class="input">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" maxlength="200"></textarea>
+                <div class="error"></div>
+                <small id="charCount">0/200 characters</small>
+            </div>
+
             <button type="submit">Sign Up</button>
+            <div id="successMessage" class="success-message" style="display: none;">
+                Registration successful! Thank you for signing up.
+            </div>
         </form>
     </div>
     

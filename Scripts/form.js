@@ -4,6 +4,8 @@ let email = document.getElementById('email');
 let password = document.getElementById('password');
 let password2 = document.getElementById('password2');
 let phoneNumber = document.getElementById('phone');
+let message = document.getElementById('message');
+let charCount = document.getElementById('charCount');
 
 // Validate each input field on blur (when it loses focus)
 username.addEventListener('blur', () => validateUsername());
@@ -15,6 +17,7 @@ phoneNumber.addEventListener('blur', () => validatePhoneNumber());
 form.addEventListener('submit', e => {
     e.preventDefault();
     validateForm();
+    validateMessage(); // Call message validation
 });
 
 const setError = (element, message) => {
@@ -56,6 +59,18 @@ const isValidPhoneNumber = number => {
     const re = /^\d{10}$/;
     return re.test(number);
 }
+
+message.addEventListener('input', () => {
+    const currentLength = message.value.length;
+    charCount.textContent = `${currentLength}/200 characters`;
+
+    // Check if character limit is reached
+    if (currentLength > 200) {
+        setError(message, "Message cannot exceed 200 characters.");
+    } else {
+        setSuccess(message);
+    }
+});
 
 // Individual validation functions for each field
 const validateUsername = () => {
@@ -114,6 +129,17 @@ const validatePhoneNumber = () => {
     }
 };
 
+const validateMessage = () => {
+    const messageValue = message.value.trim();
+    if (messageValue === '') {
+        setError(message, 'Message is required');
+    } else if (messageValue.length > 200) {
+        setError(message, 'Message cannot exceed 200 characters');
+    } else {
+        setSuccess(message);
+    }
+};
+
 // Form validation on submit
 const validateForm = () => {
     validateUsername();
@@ -121,4 +147,19 @@ const validateForm = () => {
     validatePassword();
     validatePassword2();
     validatePhoneNumber();
+
+    const isFormValid = document.querySelectorAll('.input.error').length === 0;
+
+    if (isFormValid) {
+        successMessage.style.display = 'block';  // Show success message
+        form.reset();  // Clear the form
+        clearSuccessStyles();  // Optionally clear success styles from fields
+    }
+};
+
+// Optional: Clears success styles from form fields after submission
+const clearSuccessStyles = () => {
+    document.querySelectorAll('.input.success').forEach(input => {
+        input.classList.remove('success');
+    });
 };
