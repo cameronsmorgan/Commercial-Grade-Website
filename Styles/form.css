@@ -1,6 +1,6 @@
 .container {
     max-width: 400px;
-    margin: 80px auto; /* Center form with margin-top to avoid clash with navbar */
+    margin: 120px auto; /* Center form with margin-top to avoid clash with navbar */
     padding: 20px;
     background-color: #222; /* Dark background for form */
     border-radius: 8px;
@@ -70,4 +70,23 @@ button[type="submit"]:hover {
         flex-direction: column;
         align-items: flex-start;
     }
+}
+
+.input.error input {
+    border-color: #ff4d4d; /* Red border for error */
+}
+
+.input.success input {
+    border-color: #4CAF50; /* Green border for success */
+}
+
+.error {
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block; /* Make sure error messages are displayed */
+}
+
+.success {
+    color: #4CAF50;
 }
