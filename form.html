@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership</title>
+    <link rel="stylesheet" href="./Styles/style.css">
+    <link rel="stylesheet" href="./Styles/form.css">
+
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <img src="./Images/ACMilanLogo.png" alt="AC Milan Logo" class="logo-img">
+            AC Milan
+        </a> 
+        <nav></nav>
+    </header>
+
+
+    <div class="container">
+        <form id="form">
+            <h1>Registration</h1>
+            <div class="input">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password">
+                <div class="error"></div>
+            </div>
+            <div class="input">
+                <label for="password2">Password again</label>
+                <input id="password2" name="password2" type="password">
+                <div class="error"></div>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    
+
+    <script type="module">
+        import { initialise } from "./Scripts/menu.js";
+        initialise("Membership"); // Call the initialise function with a test argument
+    </script>
+
+    <script src="./Scripts/form.js"></script>
+</body>
+</html>
