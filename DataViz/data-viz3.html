@@ -3,13 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Radar Chart</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        /* Tooltip styling */
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            padding: 5px;
+            font-size: 12px;
+            background: lightsteelblue;
+            border: 1px solid #333;
+            border-radius: 5px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="milanRadarChart"></div>
+    <label for="teamSelect">Compare AC Milan with:</label>
+    <select id="teamSelect">
+        <option value="">Select a team</option>
+        <option value="interMilan">Inter Milan</option>
+        <option value="juventus">Juventus</option>
+        <option value="atalanta">Atalanta</option>
+    </select>
 
+    <div class="tooltip" id="tooltip"></div> <!-- Tooltip div -->
 
-    <script src="../Scripts/dataviz3.js"></script>
-
+    <script type="module" src="../Scripts/dataviz3.js"></script>
 </body>
 </html>
