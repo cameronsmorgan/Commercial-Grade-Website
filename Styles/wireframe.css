@@ -92,3 +92,74 @@
     width: 150px; 
     height: 75px; 
   }
+
+  @media (max-width: 1200px) {
+    .card {
+        flex: 0 0 calc(33.333% - 10px); /* Smaller width for three cards per row */
+    }
+}
+
+@media (max-width: 992px) {
+    .carousel {
+        width: 90%;
+    }
+    .card {
+        flex: 0 0 calc(50% - 10px); /* Two cards per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        width: 95%;
+    }
+    .card {
+        flex: 0 0 calc(50% - 10px); /* Adjust card width for smaller screens */
+        margin: 10px auto;
+    }
+    .card-content {
+        padding: 10px;
+    }
+    .card-content p {
+        font-size: 1.2rem;
+    }
+    .carousel-button {
+        padding: 5px 15px;
+    }
+    #prevButton, #nextButton {
+        width: 100px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        flex: 0 0 calc(100% - 20px); /* Full-width single column */
+        margin: 10px auto;
+    }
+    .card-content p {
+        font-size: 1rem;
+    }
+    .carousel-button {
+        padding: 5px 10px;
+    }
+    #prevButton, #nextButton {
+        width: 80px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .carousel-container {
+        margin-top: 100px;
+    }
+    .card {
+        flex: 0 0 calc(100% - 10px); /* Reduce padding for extra small screens */
+        margin: 5px auto;
+    }
+    .card-content {
+        padding: 8px;
+    }
+    .card-content p {
+        font-size: 0.9rem;
+    }
+}

@@ -8,6 +8,8 @@ const menuItems = [
     {name: "Theory", href:`${root}/Theory/index.html`},
     {name: "DataViz", href:`${root}/DataViz/index.html`},
     {name: "Memories", href:`${root}/Memories/memories.html`},
+    {name: "Form", href:root + `/form.html`},
+
 ];
 
 /*export function is used so that the function can be used or accessed in other files. 

@@ -37,3 +37,50 @@ button {
 #chart {
     margin-bottom: 20px; 
 }
+
+@media (max-width: 768px) {
+    .tooltip {
+        width: 100px; /* Smaller tooltip width for smaller screens */
+        font-size: 14px; /* Adjust font size */
+    }
+
+    button {
+        padding: 8px; /* Smaller padding for buttons */
+        font-size: 14px; /* Adjust button font size */
+    }
+
+    .section-title {
+        font-size: 14px; /* Smaller font size for section titles */
+    }
+
+    #chart-wrapper {
+        margin-top: 50px; /* Reduced top margin */
+        flex-direction: column; /* Stack buttons and chart vertically */
+        align-items: center; /* Center align for better fit */
+    }
+
+    #buttons {
+        margin-right: 0; /* Remove right margin to fit better */
+        margin-bottom: 20px; /* Add bottom margin for spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    .tooltip {
+        width: 80px; /* Further reduce tooltip width */
+        font-size: 12px; /* Smaller tooltip font size */
+    }
+
+    button {
+        padding: 6px; /* Further reduce padding */
+        font-size: 12px; /* Smaller button font size */
+    }
+
+    .section-title {
+        font-size: 12px; /* Smaller section title font size */
+    }
+
+    #chart-wrapper {
+        margin-top: 30px; /* Further reduced top margin */
+    }
+}

@@ -47,6 +47,7 @@ body,html{
 .maldini-section {
     display: flex;
     height: 100vh;
+    flex-wrap: wrap; /*responsive* on smaller screens*/
 }
 
 .maldini-image {
@@ -246,5 +247,78 @@ main {
     width: 100%;
     height: 600px;
    
+}
+
+@media only screen and (max-width: 1200px) {
+    header {
+        padding: 20px 50px;
+    }
+    .san-siro-banner h1 {
+        font-size: 2.5rem;
+    }
+    .maldini-text, .third-text, .fourth-text {
+        font-size: 2rem;
+    }
+
+    .calligraphy-container {
+        top: 30%; /* Adjust top position on smaller screens */
+    }
+    .calligraphy-text {
+        font-size: 36px; /* Reduce font size for better fit */
+        stroke-width: 1.5; /* Slightly reduce stroke width */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 10px 30px;
+    }
+    .san-siro-banner h1 {
+        font-size: 2rem;
+    }
+    .maldini-section, .third-section, .fourth-section {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+    }
+    .maldini-text, .third-text, .fourth-text {
+        font-size: 1.5rem;
+    }
+
+    .calligraphy-container {
+        top: 25%;
+        width: 80%;
+    }
+    .calligraphy-text {
+        font-size: 28px;
+        stroke-width: 1.2;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    header {
+        padding: 10px 20px;
+        flex-direction: column;
+    }
+    .san-siro-banner h1 {
+        font-size: 1.8rem;
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    .calligraphy-text {
+        font-size: 36px;
+    }
+    .maldini-text, .third-text, .fourth-text {
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+    .calligraphy-container {
+        top: 20%;
+        width: 90%;
+        padding: 5px;
+    }
+    .calligraphy-text {
+        font-size: 24px;
+        stroke-width: 1;
+    }
 }
 
