@@ -1,0 +1,41 @@
+body {
+    color: #f5f5f7; /* Light text color for readability */
+}
+
+h1 {
+    color: #f5f5f7;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.tooltip {
+    position: absolute;
+    padding: 8px;
+    font-size: 12px;
+    background: #333;
+    color: #f5f5f7;
+    border: 1px solid #555;
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+#chart-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#filter-container{
+    margin-right: 20px;
+}
+
+#teamSelect{
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+    padding: 8px;
+}
+

@@ -5,33 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radar Chart</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <style>
-        /* Tooltip styling */
-        .tooltip {
-            position: absolute;
-            text-align: center;
-            padding: 5px;
-            font-size: 12px;
-            background: lightsteelblue;
-            border: 1px solid #333;
-            border-radius: 5px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/radar.css">
+
+
 </head>
 <body>
-    <div id="milanRadarChart"></div>
-    <label for="teamSelect">Compare AC Milan with:</label>
-    <select id="teamSelect">
-        <option value="">Select a team</option>
-        <option value="interMilan">Inter Milan</option>
-        <option value="juventus">Juventus</option>
-        <option value="atalanta">Atalanta</option>
-    </select>
+    <header>
+        <a href="#" class="logo">
+            <img src="../Images/ACMilanLogo.png" alt="AC Milan Logo" class="logo-img">
+            AC Milan
+        </a>
+        <nav></nav>
+    </header>
+    <h1>AC Milan Statistics Vs Top Teams</h1>
+    <div id="chart-container">
+        <div id="filter-container" >
+            <label for="teamSelect" >Compare AC Milan with:</label>
+            <select id="teamSelect" >
+                <option value="">Select a team</option>
+                <option value="interMilan">Inter Milan</option>
+                <option value="juventus">Juventus</option>
+                <option value="atalanta">Atalanta</option>
+            </select>
+        </div>
+        <div id="milanRadarChart"></div>
+    </div>
 
     <div class="tooltip" id="tooltip"></div> <!-- Tooltip div -->
+
+    <script type="module">
+        import { initialise } from "../Scripts/menu.js";
+        initialise("DataViz"); 
+    </script>
 
     <script type="module" src="../Scripts/dataviz3.js"></script>
 </body>

@@ -71,7 +71,7 @@ const formatDataAndCreateChart = (compareTeam = null) => {
 const createRadarChart = (acMilanData, compareData) => {
     d3.select("#milanRadarChart").selectAll("*").remove();  // Clear existing chart
 
-    const width = 500, height = 500, margin = 50;
+    const width = 650, height = 500, margin = 50;
     const radius = Math.min(width, height) / 2 - margin;
     const levels = 5;
     const maxValue = 100;
@@ -108,14 +108,15 @@ const createRadarChart = (acMilanData, compareData) => {
         .attr("y1", 0)
         .attr("x2", (d, i) => radialScale(maxValue * 1.1) * Math.cos(angleSlice * i - Math.PI / 2))
         .attr("y2", (d, i) => radialScale(maxValue * 1.1) * Math.sin(angleSlice * i - Math.PI / 2))
-        .style("stroke", "grey")
+        .style("stroke", "white")
         .style("stroke-width", "1px");
 
     axis.append("text")
         .attr("x", (d, i) => radialScale(maxValue * 1.2) * Math.cos(angleSlice * i - Math.PI / 2))
         .attr("y", (d, i) => radialScale(maxValue * 1.2) * Math.sin(angleSlice * i - Math.PI / 2))
         .attr("dy", "0.35em")
-        .style("font-size", "12px")
+        .style("fill", "#f5f5f7") // White text for readability
+        .style("font-size", "15px")
         .attr("text-anchor", "middle")
         .text(d => d.axis);
 
