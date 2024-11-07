@@ -41,7 +41,7 @@ const fetchStandings = async () => {
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '6ed0a534c9mshb4ce6150cf50aa4p1b036bjsnf2a0146c6be0',
+            'x-rapidapi-key': '954e29bdcfmshd0c282e26d0038dp14dccfjsne4ee2b04831f',
             'x-rapidapi-host': 'sofascore.p.rapidapi.com'
         }
     };
