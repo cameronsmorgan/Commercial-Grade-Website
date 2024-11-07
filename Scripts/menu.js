@@ -66,6 +66,11 @@ export function initialise(currentPage) {
         }
 
         li.appendChild(a); 
+
+        /*-->Dropdown functionality
+        --> if a menu item has subitems: a new ul element and adds dropdown class
+        --> iterates over each subitem and creates a li and a tag for each
+        --> subitems are added to dropdown ul*/
         if (menuItem.subItems) {
             const dropdown = document.createElement("ul");
             dropdown.classList.add("dropdown");
