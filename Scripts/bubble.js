@@ -1,5 +1,40 @@
 console.log('js loaded');
 
+let percent = document.querySelector('.percent');
+let progress = document.querySelector('.progress');
+let count = 4;
+let per = 16;
+let loadingInterval;
+
+const startLoading = () => {
+    loadingInterval = setInterval(() => {
+        if (count < 100) {
+            per += 7; // Increment width by 4px
+            count += 2; // Increment percentage by 1%
+            progress.style.width = `${per}px`;
+            percent.textContent = `${count}%`;
+        } else {
+            clearInterval(loadingInterval);
+            // Optionally add blink effect when loading completes
+            percent.classList.add('text-blink');
+        }
+    }, 50); // Adjust the interval as needed
+};
+
+
+const stopLoading = () => {
+    clearInterval(loadingInterval);
+    // Ensure progress bar is full
+    progress.style.width = '400px';
+    percent.textContent = '100%';
+    percent.classList.add('text-blink');
+    // Hide the loading screen after a short delay for visual effect
+    setTimeout(() => {
+        document.querySelector('.loading').style.display = 'none';
+    }, 500);
+};
+
+
 //asynchronous functions can use await to handle promises
 const fetchStandings = async () => {
     const url = 'https://sofascore.p.rapidapi.com/tournaments/get-standings?tournamentId=23&seasonId=37475&type=total';
@@ -31,11 +66,18 @@ const fetchStandings = async () => {
 
             // Create the bubble chart with the fetched data
             createBubbleChart(teamsData);
+
+            stopLoading();
+
         } else {
             console.log('No data.');
+            stopLoading();
+
         }
     } catch (error) {
         console.error('Error fetching data:', error);
+        stopLoading();
+
     }
 };
 
@@ -174,5 +216,6 @@ const createBubbleChart = (data) => {
     d3.select("#resetButton").on("click", resetBubbles);
 };
 
+startLoading();
 
 fetchStandings();

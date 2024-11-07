@@ -1,3 +1,38 @@
+
+let percent = document.querySelector('.percent');
+let progress = document.querySelector('.progress');
+let count = 4;
+let per = 16;
+let loadingInterval;
+
+const startLoading = () => {
+    loadingInterval = setInterval(() => {
+        if (count < 100) {
+            per += 4; // Increment width by 4px
+            count += 1; // Increment percentage by 1%
+            progress.style.width = `${per}px`;
+            percent.textContent = `${count}%`;
+        } else {
+            clearInterval(loadingInterval);
+            // Optionally add blink effect when loading completes
+            percent.classList.add('text-blink');
+        }
+    }, 50); // Adjust the interval as needed
+};
+
+
+const stopLoading = () => {
+    clearInterval(loadingInterval);
+    // Ensure progress bar is full
+    progress.style.width = '400px';
+    percent.textContent = '100%';
+    percent.classList.add('text-blink');
+    // Hide the loading screen after a short delay for visual effect
+    setTimeout(() => {
+        document.querySelector('.loading').style.display = 'none';
+    }, 500);
+};
+
 const fetchStandings = async () => {
     const url = 'https://sofascore.p.rapidapi.com/teams/get-player-statistics?teamId=2692&tournamentId=23&seasonId=52760&type=overall';
     const options = {
@@ -37,8 +72,12 @@ const fetchStandings = async () => {
         
 
         createHeatmap(playerData);
+        stopLoading();
+
     } catch (error) {
         console.error('Error getting  data:', error);
+        stopLoading();
+
     }
 };
 
@@ -137,5 +176,6 @@ const createHeatmap = (playerData) => {
         })
 }
 
+startLoading();
 
 fetchStandings();
