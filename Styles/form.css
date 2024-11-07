@@ -4,9 +4,9 @@
 
 .container {
     max-width: 400px;
-    margin: 120px auto; /* Center form with margin-top to avoid clash with navbar */
+    margin: 120px auto; 
     padding: 20px;
-    background-color: #222; /* Dark background for form */
+    background-color: #222; 
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -18,7 +18,7 @@ h1 {
     font-family: 'Dancing Script';
 }
 
-/* Form Styling */
+
 .input {
     margin-bottom: 15px;
     font-family: 'Sarabun';
@@ -28,7 +28,7 @@ h1 {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #e30613; /* AC Milan Red for labels */
+    color: #e30613; 
 }
 
 .input input {
@@ -62,15 +62,15 @@ button[type="submit"]:hover {
     background-color: #b3000f;
 }
 
-/* Error Message Styling */
+
 .error {
     color: #ff4d4d;
     font-size: 0.85rem;
     margin-top: 5px;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
-/* Media Query for Responsiveness */
+
 @media (max-width: 480px) {
     .container {
         width: 90%;
@@ -84,18 +84,18 @@ button[type="submit"]:hover {
 }
 
 .input.error input {
-    border-color: #ff4d4d; /* Red border for error */
+    border-color: #ff4d4d; 
 }
 
 .input.success input {
-    border-color: #4CAF50; /* Green border for success */
+    border-color: #4CAF50; 
 }
 
 .error {
     color: #ff4d4d;
     font-size: 0.85rem;
     margin-top: 5px;
-    display: block; /* Make sure error messages are displayed */
+    display: block; 
 }
 
 .success {
@@ -123,9 +123,9 @@ button[type="submit"]:hover {
 }
 
 textarea {
-    width: 100%;       /* Full width of the container */
-    max-width: 500px;  /* Limit the maximum width */
-    height: 150px;     /* Height in pixels */
-    padding: 10px;     /* Add padding for better spacing */
-    font-size: 16px;   /* Adjust font size */
+    width: 100%;       
+    max-width: 500px;  
+    height: 150px;     
+    padding: 10px;     
+    font-size: 16px;   
 }

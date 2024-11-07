@@ -1,7 +1,7 @@
 
 
 function createFooter() {
-    // Define the footer HTML content
+    
     const root = "/Commercial-Grade-Website"; // folder name
 
     const footerHTML = `

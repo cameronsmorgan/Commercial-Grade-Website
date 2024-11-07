@@ -9,26 +9,25 @@ let loadingInterval;
 const startLoading = () => {
     loadingInterval = setInterval(() => {
         if (count < 100) {
-            per += 7; // Increment width by 4px
-            count += 2; // Increment percentage by 1%
+            per += 7; 
+            count += 2; 
             progress.style.width = `${per}px`;
             percent.textContent = `${count}%`;
         } else {
             clearInterval(loadingInterval);
-            // Optionally add blink effect when loading completes
+           
             percent.classList.add('text-blink');
         }
-    }, 50); // Adjust the interval as needed
+    }, 50); 
 };
 
 
 const stopLoading = () => {
     clearInterval(loadingInterval);
-    // Ensure progress bar is full
     progress.style.width = '400px';
     percent.textContent = '100%';
     percent.classList.add('text-blink');
-    // Hide the loading screen after a short delay for visual effect
+    
     setTimeout(() => {
         document.querySelector('.loading').style.display = 'none';
     }, 500);

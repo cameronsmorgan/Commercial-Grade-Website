@@ -95,29 +95,29 @@
   }
 
   .lightbox {
-    display: none; /* Hidden initially */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark translucent background */
+    background-color: rgba(0, 0, 0, 0.8); 
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-/* Lightbox image */
+
 .lightbox img {
     max-width: 90%;
     max-height: 90%;
     border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Optional shadow for effect */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); 
 }
 
   @media (max-width: 1200px) {
     .card {
-        flex: 0 0 calc(33.333% - 10px); /* Smaller width for three cards per row */
+        flex: 0 0 calc(33.333% - 10px); 
     }
 }
 
@@ -126,7 +126,7 @@
         width: 90%;
     }
     .card {
-        flex: 0 0 calc(50% - 10px); /* Two cards per row */
+        flex: 0 0 calc(50% - 10px); 
     }
 }
 
@@ -135,7 +135,7 @@
         width: 95%;
     }
     .card {
-        flex: 0 0 calc(50% - 10px); /* Adjust card width for smaller screens */
+        flex: 0 0 calc(50% - 10px); 
         margin: 10px auto;
     }
     .card-content {
@@ -155,7 +155,7 @@
 
 @media (max-width: 576px) {
     .card {
-        flex: 0 0 calc(100% - 20px); /* Full-width single column */
+        flex: 0 0 calc(100% - 20px); 
         margin: 10px auto;
     }
     .card-content p {
@@ -175,7 +175,7 @@
         margin-top: 100px;
     }
     .card {
-        flex: 0 0 calc(100% - 10px); /* Reduce padding for extra small screens */
+        flex: 0 0 calc(100% - 10px); 
         margin: 5px auto;
     }
     .card-content {

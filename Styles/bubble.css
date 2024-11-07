@@ -40,47 +40,47 @@ button {
 
 @media (max-width: 768px) {
     .tooltip {
-        width: 100px; /* Smaller tooltip width for smaller screens */
-        font-size: 14px; /* Adjust font size */
+        width: 100px; 
+        font-size: 14px; 
     }
 
     button {
-        padding: 8px; /* Smaller padding for buttons */
-        font-size: 14px; /* Adjust button font size */
+        padding: 8px; 
+        font-size: 14px; 
     }
 
     .section-title {
-        font-size: 14px; /* Smaller font size for section titles */
+        font-size: 14px; 
     }
 
     #chart-wrapper {
-        margin-top: 50px; /* Reduced top margin */
-        flex-direction: column; /* Stack buttons and chart vertically */
-        align-items: center; /* Center align for better fit */
+        margin-top: 50px; 
+        flex-direction: column; 
+        align-items: center; 
     }
 
     #buttons {
-        margin-right: 0; /* Remove right margin to fit better */
-        margin-bottom: 20px; /* Add bottom margin for spacing */
+        margin-right: 0; 
+        margin-bottom: 20px; 
     }
 }
 
 @media (max-width: 480px) {
     .tooltip {
-        width: 80px; /* Further reduce tooltip width */
-        font-size: 12px; /* Smaller tooltip font size */
+        width: 80px; 
+        font-size: 12px; 
     }
 
     button {
-        padding: 6px; /* Further reduce padding */
-        font-size: 12px; /* Smaller button font size */
+        padding: 6px; 
+        font-size: 12px; 
     }
 
     .section-title {
-        font-size: 12px; /* Smaller section title font size */
+        font-size: 12px; 
     }
 
     #chart-wrapper {
-        margin-top: 30px; /* Further reduced top margin */
+        margin-top: 30px; 
     }
 }

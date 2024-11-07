@@ -15,7 +15,7 @@ body, html {
     color: white;
     min-height: 200vh;
     line-height: 1.6;
-    margin: 0; /* Ensures there's no margin on the body */
+    margin: 0; 
 }
 
 .san-siro-banner {
@@ -47,7 +47,7 @@ body, html {
 .maldini-section {
     display: flex;
     height: 100vh;
-    flex-wrap: wrap; /*responsive* on smaller screens*/
+    flex-wrap: wrap; 
 }
 
 .maldini-image {
@@ -188,12 +188,12 @@ header ul li.has-dropdown .dropdown {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: rgb(25, 24, 24); /* Dark with slight transparency */
+    background-color: rgb(25, 24, 24); 
     min-width: 180px;
     border-radius: 8px;
     z-index: 100;
     opacity: 0;
-    transform: translateY(10px); /* Start dropdown slightly lower */
+    transform: translateY(10px); 
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -204,7 +204,7 @@ header ul li.has-dropdown .dropdown li {
 header ul li.has-dropdown .dropdown li a {
     padding: 12px 20px;
     display: block;
-    color: white; /* Softer white for text */
+    color: white; 
     text-decoration: none;
     font-weight: 500;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -212,7 +212,7 @@ header ul li.has-dropdown .dropdown li a {
 
 
 header ul li.has-dropdown .dropdown li a:hover {
-    background-color: red; /* Sleek red hover color */
+    background-color: red; 
     color: #fff;
     border-radius: 6px;
 }
@@ -303,11 +303,11 @@ header ul li.has-dropdown > a::after {
     }
 
     .calligraphy-container {
-        top: 30%; /* Adjust top position on smaller screens */
+        top: 30%;
     }
     .calligraphy-text {
-        font-size: 36px; /* Reduce font size for better fit */
-        stroke-width: 1.5; /* Slightly reduce stroke width */
+        font-size: 36px; 
+        stroke-width: 1.5; 
     }
 }
 
@@ -319,7 +319,7 @@ header ul li.has-dropdown > a::after {
         font-size: 2rem;
     }
     .maldini-section, .third-section, .fourth-section {
-        flex-direction: column; /* Stack sections vertically on smaller screens */
+        flex-direction: column; 
     }
     .maldini-text, .third-text, .fourth-text {
         font-size: 1.5rem;

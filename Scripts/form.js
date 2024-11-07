@@ -7,7 +7,7 @@ let phoneNumber = document.getElementById('phone');
 let message = document.getElementById('message');
 let charCount = document.getElementById('charCount');
 
-// Validate each input field on blur (when it loses focus)
+/*-> Blur event listeners are added to detect when the user leaves the field and checks if it is valid */
 username.addEventListener('blur', () => validateUsername());
 email.addEventListener('blur', () => validateEmail());
 password.addEventListener('blur', () => validatePassword());
@@ -17,17 +17,21 @@ phoneNumber.addEventListener('blur', () => validatePhoneNumber());
 form.addEventListener('submit', e => {
     e.preventDefault();
     validateForm();
-    validateMessage(); // Call message validation
+    validateMessage(); 
 });
 
+/*-> function takes an input element and error message as params 
+  -> this function finds and displays the error message*/
 const setError = (element, message) => {
-    const inputControl = element.parentElement;
+    const inputControl = element.parentElement;    
     const errorDisplay = inputControl.querySelector('.error');
 
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
     inputControl.classList.remove('success');
 }
+
+/*->Finds and displays any success indicators */
 
 const setSuccess = element => {
     const inputControl = element.parentElement;
@@ -38,29 +42,32 @@ const setSuccess = element => {
     inputControl.classList.remove('error');
 };
 
-// Helper functions for validations
+// checks for valid email characters
 const isValidEmail = email => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 
 }
 
+//checks name only contains letters and spaces
 const isValidName = name => {
     const re = /^[a-zA-Z\s]+$/;
     return re.test(String(name));
 }
 
+//checks password is 8 characters min and contains a number and special character
 const isValidPassword = password => {
     const re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
     return re.test(password);
 }
 
+//checks number is 10 digits only
 const isValidPhoneNumber = number => {
     const re = /^\d{10}$/;
     return re.test(number);
 }
 
-message.addEventListener('input', () => {
+message.addEventListener('input', () => {     //inout event listener tracks the character count
     const currentLength = message.value.length;
     charCount.textContent = `${currentLength}/200 characters`;
 
@@ -72,7 +79,7 @@ message.addEventListener('input', () => {
     }
 });
 
-// Individual validation functions for each field
+// checks if username field is empty or invalid
 const validateUsername = () => {
     const usernameValue = username.value.trim();
     if (usernameValue === '') {
@@ -106,6 +113,8 @@ const validatePassword = () => {
     }
 };
 
+
+//passwords must be the same
 const validatePassword2 = () => {
     const passwordValue = password.value.trim();
     const password2Value = password2.value.trim();
@@ -153,11 +162,11 @@ const validateForm = () => {
     if (isFormValid) {
         successMessage.style.display = 'block';  // Show success message
         form.reset();  // Clear the form
-        clearSuccessStyles();  // Optionally clear success styles from fields
+        clearSuccessStyles();  //  clear success styles from fields
     }
 };
 
-// Optional: Clears success styles from form fields after submission
+//Clears success styles from form fields after submission
 const clearSuccessStyles = () => {
     document.querySelectorAll('.input.success').forEach(input => {
         input.classList.remove('success');

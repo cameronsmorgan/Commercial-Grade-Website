@@ -2,32 +2,34 @@
 let percent = document.querySelector('.percent');
 let progress = document.querySelector('.progress');
 let count = 4;
-let per = 16;
+let per = 16;    //width of progress bar
 let loadingInterval;
 
+
+/*-->sets an interval to execute the function every 50 milliseconds */
 const startLoading = () => {
     loadingInterval = setInterval(() => {
         if (count < 100) {
-            per += 3; // Increment width by 4px
-            count += 1; // Increment percentage by 1%
+            per += 3;   //increase the width of progress bar
+            count += 1; //increment percentage
             progress.style.width = `${per}px`;
             percent.textContent = `${count}%`;
         } else {
             clearInterval(loadingInterval);
-            // Optionally add blink effect when loading completes
+            
             percent.classList.add('text-blink');
         }
-    }, 50); // Adjust the interval as needed
+    }, 50); 
 };
 
 
 const stopLoading = () => {
     clearInterval(loadingInterval);
-    // Ensure progress bar is full
+
     progress.style.width = '400px';
     percent.textContent = '100%';
     percent.classList.add('text-blink');
-    // Hide the loading screen after a short delay for visual effect
+   
     setTimeout(() => {
         document.querySelector('.loading').style.display = 'none';
     }, 500);

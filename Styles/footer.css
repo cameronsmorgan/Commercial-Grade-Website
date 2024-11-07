@@ -18,7 +18,7 @@ body{
 }
 
 .footer-logo img {
-    width: 250px; /* Adjusted size */
+    width: 250px;
     margin-bottom: 10px;
     margin-right: 2%;
 }
@@ -27,17 +27,17 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 10px; /* Adjust gap for spacing between sections */
+    gap: 10px; 
 }
 
 .footer-links, .footer-socials, .footer-contact {
     max-width: 200px;
-    margin-bottom: 20px; /* Reduced bottom margin to move items up */
+    margin-bottom: 20px; 
 }
 
 .footer-links h4, .footer-socials h4, .footer-contact h4 {
     color: #D32F2F;
-    margin-bottom: 5px; /* Reduced spacing for headings */
+    margin-bottom: 5px; 
 }
 
 .footer-links ul, .footer-socials ul {
@@ -68,7 +68,7 @@ body{
 .footer-bottom {
     margin-top: 10px;
     border-top: 1px solid #444;
-    padding-top: 5px; /* Reduced padding at the top */
+    padding-top: 5px; 
     font-size: 0.8em;
 }
 
