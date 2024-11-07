@@ -188,10 +188,9 @@ header ul li.has-dropdown .dropdown {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: rgba(34, 34, 34, 0.9); /* Dark with slight transparency */
+    background-color: rgb(25, 24, 24); /* Dark with slight transparency */
     min-width: 180px;
     border-radius: 8px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
     z-index: 100;
     opacity: 0;
     transform: translateY(10px); /* Start dropdown slightly lower */
@@ -205,7 +204,7 @@ header ul li.has-dropdown .dropdown li {
 header ul li.has-dropdown .dropdown li a {
     padding: 12px 20px;
     display: block;
-    color: #f0f0f0; /* Softer white for text */
+    color: white; /* Softer white for text */
     text-decoration: none;
     font-weight: 500;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -213,7 +212,7 @@ header ul li.has-dropdown .dropdown li a {
 
 
 header ul li.has-dropdown .dropdown li a:hover {
-    background-color: #ff4d4d; /* Sleek red hover color */
+    background-color: red; /* Sleek red hover color */
     color: #fff;
     border-radius: 6px;
 }
@@ -233,7 +232,7 @@ header.sticky ul li a{
 }
 
 header nav ul li.active a {
-    border-bottom: 2px solid #ff0000; 
+    border-bottom: 2px solid red; 
     padding-bottom: 5px; 
     color: white; 
 }
@@ -241,21 +240,19 @@ header nav ul li.active a {
 /* underline effect */
 header ul li.active a,
 header ul li a:hover {
-    color: #ff4d4d;
-    border-bottom: 2px solid #ff4d4d;
+    color: red;
+
 }
 
 header ul li.has-dropdown > a::after {
-    content: '▾'; /* Downward arrow */
+    
     margin-left: 5px;
     font-size: 0.8em;
-    color: #ff4d4d;
+    color: red;
     transition: transform 0.3s;
 }
 
-header ul li.has-dropdown:hover > a::after {
-    transform: rotate(180deg); /* Rotate arrow when hovered */
-}
+
 
 
 
