@@ -166,26 +166,65 @@ header.sticky{
     margin-right: 10px; 
 }
 
-header ul{
-    position: relative;
+header ul {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-header ul li{
-    position: relative;
+header ul li {
     list-style: none;
+    position: relative;
+    margin: 0 10px;
 }
 
-header ul li a{
-    position: relative;
-    margin:0 15px;
-    text-decoration: none ;
+header ul li.has-dropdown:hover .dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+header ul li.has-dropdown .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(34, 34, 34, 0.9); /* Dark with slight transparency */
+    min-width: 180px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(10px); /* Start dropdown slightly lower */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+header ul li.has-dropdown .dropdown li {
+    width: 100%;
+}
+
+header ul li.has-dropdown .dropdown li a {
+    padding: 12px 20px;
+    display: block;
+    color: #f0f0f0; /* Softer white for text */
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+header ul li.has-dropdown .dropdown li a:hover {
+    background-color: #ff4d4d; /* Sleek red hover color */
     color: #fff;
-    letter-spacing: 2px;
-    font-weight: 500px;
-    transition: 0.6s;
+    border-radius: 6px;
+}
+
+
+
+header ul li a {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: color 0.3s, border-bottom 0.3s;
 }
 
 header.sticky .logo,
@@ -200,10 +239,24 @@ header nav ul li.active a {
 }
 
 /* underline effect */
-header nav ul li a:hover {
-    border-bottom: 2px solid #ff0000; 
-    padding-bottom: 5px;
+header ul li.active a,
+header ul li a:hover {
+    color: #ff4d4d;
+    border-bottom: 2px solid #ff4d4d;
 }
+
+header ul li.has-dropdown > a::after {
+    content: '▾'; /* Downward arrow */
+    margin-left: 5px;
+    font-size: 0.8em;
+    color: #ff4d4d;
+    transition: transform 0.3s;
+}
+
+header ul li.has-dropdown:hover > a::after {
+    transform: rotate(180deg); /* Rotate arrow when hovered */
+}
+
 
 
 

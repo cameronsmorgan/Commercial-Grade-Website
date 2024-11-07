@@ -3,13 +3,38 @@ console.log('loaded');
 const root = "/Commercial-Grade-Website"; // folder name
 
 const menuItems = [
-    {name: "Home", href: root + "/index.html"},
-    {name: "Design", href:`${root}/Design/index.html`},
-    {name: "Theory", href:`${root}/Theory/index.html`},
-    {name: "DataViz", href:`${root}/DataViz/index.html`},
-    {name: "Memories", href:`${root}/Memories/memories.html`},
-    {name: "Sign Up", href:root + `/form.html`},
+    { name: "Home", href: `${root}/index.html` },
+    {
+        name: "Design", 
+        href: `${root}/Design/index.html`,
+        subItems: [
+            { name: "Wireframes", href: `${root}/Design/wireframe.html` },
+            { name: "UI/UX Theory", href: `${root}/Design/ui-ux-theory.html` },
+            { name: "Style Guide", href: `${root}/Design/style-guide.html` }
 
+        ]
+    },
+    {
+        name: "Theory", 
+        href: `${root}/Theory/index.html`,
+        subItems: [
+            { name: "Essay 1", href: `${root}/Theory/essay.html` },
+            { name: "Essay 2", href: `${root}/Theory/essay2.html` },
+            { name: "Theory", href: `${root}/Theory/theory.html` }
+
+        ]
+    },
+    {   name: "DataViz", 
+        href: `${root}/DataViz/index.html`,
+        subItems:[
+            {name: "Bubble Chart", href: `${root}/DataViz/data-viz1.html`},
+            {name: "Color Chart", href: `${root}/DataViz/data-viz2.html`},
+            {name: "Radar Chart", href: `${root}/DataViz/data-viz3.html`}
+
+        ]
+    },
+    { name: "Memories", href: `${root}/Memories/memories.html` },
+    { name: "Sign Up", href: `${root}/form.html` }
 ];
 
 /*export function is used so that the function can be used or accessed in other files. 
@@ -41,6 +66,22 @@ export function initialise(currentPage) {
         }
 
         li.appendChild(a); 
+        if (menuItem.subItems) {
+            const dropdown = document.createElement("ul");
+            dropdown.classList.add("dropdown");
+
+            menuItem.subItems.forEach(subItem => {
+                const subLi = document.createElement("li");
+                const subA = document.createElement("a");
+                subA.innerText = subItem.name;
+                subA.setAttribute("href", subItem.href);
+                subLi.appendChild(subA);
+                dropdown.appendChild(subLi);
+            });
+
+            li.classList.add("has-dropdown");
+            li.appendChild(dropdown);
+        }
         ul.appendChild(li); 
     }
 
