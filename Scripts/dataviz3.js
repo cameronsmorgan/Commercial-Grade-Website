@@ -1,4 +1,37 @@
 console.log('loaded');
+let percent = document.querySelector('.percent');
+let progress = document.querySelector('.progress');
+let count = 4;
+let per = 16;
+let loadingInterval;
+
+const startLoading = () => {
+    loadingInterval = setInterval(() => {
+        if (count < 100) {
+            per += 3.5; // Increment width by 4px
+            count += 1; // Increment percentage by 1%
+            progress.style.width = `${per}px`;
+            percent.textContent = `${count}%`;
+        } else {
+            clearInterval(loadingInterval);
+            // Optionally add blink effect when loading completes
+            percent.classList.add('text-blink');
+        }
+    }, 50); // Adjust the interval as needed
+};
+
+
+const stopLoading = () => {
+    clearInterval(loadingInterval);
+    // Ensure progress bar is full
+    progress.style.width = '400px';
+    percent.textContent = '100%';
+    percent.classList.add('text-blink');
+    // Hide the loading screen after a short delay for visual effect
+    setTimeout(() => {
+        document.querySelector('.loading').style.display = 'none';
+    }, 500);
+};
 
 let teamStats = {};
 
@@ -30,6 +63,8 @@ const getTeamData = async (teamId, teamKey) => {
         };
     } catch (error) {
         console.error(error);
+        stopLoading();
+
     }
 };
 
@@ -40,6 +75,8 @@ const fetchTeamsData = async () => {
     await getTeamData(2686, 'atalanta');      // Atalanta
 
     formatDataAndCreateChart();
+    stopLoading();
+
 };
 
 const formatDataAndCreateChart = (compareTeam = null) => {
@@ -185,5 +222,7 @@ const createRadarChart = (acMilanData, compareData) => {
 document.getElementById("teamSelect").addEventListener("change", (e) => {
     formatDataAndCreateChart(e.target.value);
 });
+
+startLoading();
 
 fetchTeamsData();

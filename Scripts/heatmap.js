@@ -8,7 +8,7 @@ let loadingInterval;
 const startLoading = () => {
     loadingInterval = setInterval(() => {
         if (count < 100) {
-            per += 4; // Increment width by 4px
+            per += 3; // Increment width by 4px
             count += 1; // Increment percentage by 1%
             progress.style.width = `${per}px`;
             percent.textContent = `${count}%`;
